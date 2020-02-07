@@ -4,8 +4,12 @@ var resetDb = function(next){
   mongoose.connection.db.dropDatabase(next);
 };
 
+var isConnected = function() {
+  return mongoose.connection.readyState === 1
+}
+
 before(function(done){
-  if(mongoose.get('isConnected')){
+  if(isConnected()){
     resetDb(done);
   } else {
     mongoose.connection.on('open', function(){
@@ -18,9 +22,10 @@ after(function(){
   mongoose.disconnect();
 })
 
-var host = process.env.BOXEN_MONGODB_URL || process.env.MONGOOSE_TEST_URL || 'mongodb://localhost/';
+var host = process.env.BOXEN_MONGODB_URL || process.env.MONGOOSE_TEST_URL || 'mongodb://localhost:27027/';
 var uri = host + 'mongo_relations';
 
-mongoose.connect(uri, function(){
-  mongoose.set('isConnected', true);
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });

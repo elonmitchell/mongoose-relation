@@ -236,7 +236,7 @@ describe('hasMany without options', function(){
     });
 
     it('concatenates many children', function(done) {
-      user.widgets.concat([widget, otherWidget], function(err, concatenatedWidgets){
+      user.widgets.concat([otherWidget, widget], function(err, concatenatedWidgets){
         should(concatenatedWidgets).have.lengthOf(2);
 
         should(widget._id).eql(concatenatedWidgets[0]._id);

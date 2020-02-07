@@ -27,9 +27,10 @@
     "node": ">= 0.2.0"
   },
   "dependencies": {
-    "mongoose": ">=3.0.0",
+    "mongoose": ">=5.0.0",
     "async": "^0.9.0",
-    "i": "^0.3.2"
+    "i": "^0.3.2",
+    "semver-compare": "^1.0.0"
   },
   "devDependencies": {
     "mocha": "latest",
