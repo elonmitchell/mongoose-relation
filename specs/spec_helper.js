@@ -22,7 +22,7 @@ after(function(){
   mongoose.disconnect();
 })
 
-var host = process.env.BOXEN_MONGODB_URL || process.env.MONGOOSE_TEST_URL || 'mongodb://localhost:27027/';
+var host = process.env.BOXEN_MONGODB_URL || process.env.MONGOOSE_TEST_URL || 'mongodb://localhost/';
 var uri = host + 'mongo_relations';
 
 mongoose.connect(uri, {
